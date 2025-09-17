@@ -4,117 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>入力フォーム</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: #f5f5f5;
-        }
-        .form-container {
-            background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            color: #333;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: #555;
-        }
-        input[type="text"],
-        input[type="number"],
-        select,
-        textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 14px;
-            box-sizing: border-box;
-        }
-        textarea {
-            resize: vertical;
-            height: 100px;
-        }
-        .radio-group {
-            display: flex;
-            gap: 15px;
-            margin-top: 5px;
-        }
-        .radio-option {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        input[type="radio"] {
-            width: auto;
-        }
-        .submit-btn {
-            background-color: #007bff;
-            color: white;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-            cursor: pointer;
-            width: 100%;
-            margin-top: 20px;
-        }
-        .submit-btn:hover {
-            background-color: #0056b3;
-        }
-    </style>
+    <link rel="stylesheet" href="form.css">
 </head>
 <body>
     <div class="form-container">
-        <h1>入力フォーム</h1>
+        <h1 class="form-title">入力フォーム</h1>
         <form id="userForm" action="#" method="post">
             <div class="form-group">
-                <label for="name">名前<span style="color: red;">*</span></label>
+                <label for="name" class="form-label">名前<span class="required-asterisk">*</span></label>
                 <input type="text" id="name" name="name" required>
             </div>
 
             <div class="form-group">
-                <label for="furigana">ふりがな<span style="color: red;">*</span></label>
+                <label for="furigana" class="form-label">ふりがな<span class="required-asterisk">*</span></label>
                 <input type="text" id="furigana" name="furigana" required>
             </div>
 
             <div class="form-group">
-                <label for="age">年齢</label>
+                <label for="age" class="form-label">年齢</label>
                 <input type="number" id="age" name="age" min="0" max="150">
             </div>
 
             <div class="form-group">
-                <label>性別</label>
+                <label class="form-label">性別</label>
                 <div class="radio-group">
                     <div class="radio-option">
                         <input type="radio" id="male" name="gender" value="male">
-                        <label for="male">男性</label>
+                        <label for="male" class="form-label">男性</label>
                     </div>
                     <div class="radio-option">
                         <input type="radio" id="female" name="gender" value="female">
-                        <label for="female">女性</label>
+                        <label for="female" class="form-label">女性</label>
                     </div>
                     <div class="radio-option">
                         <input type="radio" id="other" name="gender" value="other">
-                        <label for="other">その他</label>
+                        <label for="other" class="form-label">その他</label>
                     </div>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="comment">コメント</label>
+                <label for="comment" class="form-label">コメント</label>
                 <textarea id="comment" name="comment" placeholder="ご自由にコメントをお書きください"></textarea>
             </div>
 
