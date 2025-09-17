@@ -34,10 +34,7 @@ body {
     color: #ff0000;
 }
 
-input[type="text"],
-input[type="number"],
-select,
-textarea {
+.form-input {
     width: 100%;
     padding: 10px;
     border: 1px solid #dddddd;
@@ -46,7 +43,7 @@ textarea {
     box-sizing: border-box;
 }
 
-textarea {
+.form-textarea {
     resize: vertical;
     height: 100px;
 }
@@ -63,7 +60,7 @@ textarea {
     gap: 5px;
 }
 
-input[type="radio"] {
+.radio-input {
     width: auto;
 }
 
