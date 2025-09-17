@@ -17,7 +17,7 @@
 
             <div class="form-group">
                 <label for="furigana" class="form-label">フリガナ<span class="required-asterisk">*</span></label>
-                <input type="text" id="furigana" name="furigana" class="form-input" pattern="^[ほ-ん\s]+$" title="ひらがなと長音記号のみ入力してください" required>
+                <input type="text" id="furigana" name="furigana" class="form-input" pattern="^[ぁ-ん\s]+$" title="ひらがなと長音記号のみ入力してください" required>
             </div>
 
             <div class="form-group">
@@ -31,6 +31,14 @@
                     <div class="radio-option">
                         <input type="radio" id="male" name="gender" value="male" class="radio-input">
                         <label for="male" class="form-label">男性</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="female" name="gender" value="female" class="radio-input">
+                        <label for="female" class="form-label">女性</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="other" name="gender" value="other" class="radio-input">
+                        <label for="other" class="form-label">その他</label>
                     </div>
                 </div>
             </div>
@@ -55,7 +63,7 @@
             let gender = null;
             for (let i = 0; i < genderElements.length; i++) {
                 if (genderElements[i].checked) {
-                    gender = genderElements[i];
+                    gender = genderElements[i].value;
                     break;
                 }
             }
@@ -68,7 +76,7 @@
             
             let message = `入力内容:\n名前: ${name}\nふりがな: ${furigana}`;
             if (age) message += `\n年齢: ${age}歳`;
-            if (gender) message += `\n性別: ${gender.nextElementSibling.textContent}`;
+            if (gender) message += `\n性別: ${gender}`;
             if (comment) message += `\nコメント: ${comment}`;
             
             alert(message);
