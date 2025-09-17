@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ほげ</title>
+    <link rel="stylesheet" href="form.css">
+</head>
+<body>
+    <div class="form-container">
+        <h1 class="form-title">ここはホゲホゲです</h1>
+        <form id="userForm" action="#" method="post">
+            <div class="form-group">
+                <label for="name" class="form-label">お名前<span class="required-asterisk">*</span></label>
+                <input type="text" id="name" name="name" class="form-input" required>
+            </div>
+
+            <div class="form-group">
+                <label for="furigana" class="form-label">フリガナ<span class="required-asterisk">*</span></label>
+                <input type="text" id="furigana" name="furigana" class="form-input" pattern="^[ほ-ん\s]+$" title="ひらがなと長音記号のみ入力してください" required>
+            </div>
+
+            <div class="form-group">
+                <label for="age" class="form-label">年齢</label>
+                <input type="number" id="age" name="age" class="form-input" min="0" max="150">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">性別</label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="male" name="gender" value="male" class="radio-input">
+                        <label for="male" class="form-label">男性</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="comment" class="form-label">コメント</label>
+                <textarea id="comment" name="comment" class="form-input form-textarea" placeholder="ご自由にコメントをお書きください"></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">送信</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('userForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value.trim();
+            const furigana = document.getElementById('furigana').value.trim();
+            const age = document.getElementById('age').value;
+            const genderElements = document.getElementsByName('gender');
+            let gender = null;
+            for (let i = 0; i < genderElements.length; i++) {
+                if (genderElements[i].checked) {
+                    gender = genderElements[i];
+                    break;
+                }
+            }
+            const comment = document.getElementById('comment').value.trim();
+            
+            if (!name || !furigana) {
+                alert('名前とふりがなは必須項目です。');
+                return;
+            }
+            
+            let message = `入力内容:\n名前: ${name}\nふりがな: ${furigana}`;
+            if (age) message += `\n年齢: ${age}歳`;
+            if (gender) message += `\n性別: ${gender.nextElementSibling.textContent}`;
+            if (comment) message += `\nコメント: ${comment}`;
+            
+            alert(message);
+        });
+    </script>
+</body>
+</html>
