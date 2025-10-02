@@ -4,11 +4,17 @@ on:
   # 手動実行を可能にする
   workflow_dispatch:
     inputs:
-      message:
-        description: 'カスタムメッセージ（省略可）'
+      service_type:
+        description: 'サービスの種類（省略可）'
         required: false
-        default: 'ワークフローテスト実行中...'
-  
+        default: ""
+        type: choice
+        options:
+          - "(名前なし)"
+          - "apple"
+          - "banana"
+          - "cocoa"
+
   # 特定のブランチへのプッシュで実行
   push:
     branches:
@@ -16,7 +22,7 @@ on:
       - develop
       - 'feature/*'
       - 'hotfix/*'
-  
+
   # プルリクエストでも実行
   pull_request:
     branches:
@@ -26,11 +32,11 @@ on:
 jobs:
   test-job:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: チェックアウト
         uses: actions/checkout@v4
-      
+
       - name: 環境情報の表示
         run: |
           echo "🚀 ワークフローが開始されました！"
@@ -39,23 +45,23 @@ jobs:
           echo "👤 実行者: ${{ github.actor }}"
           echo "📝 コミットSHA: ${{ github.sha }}"
           echo "🏠 リポジトリ: ${{ github.repository }}"
-      
-      - name: カスタムメッセージの表示
-        if: github.event.inputs.message
+
+      - name: 選択したサービス名の表示
+        if: github.event.inputs.service_type
         run: |
-          echo "💬 カスタムメッセージ: ${{ github.event.inputs.message }}"
-      
+          echo "💬 サービス名: ${{ github.event.inputs.service_type }}"
+
       - name: ファイル一覧の表示
         run: |
           echo "📁 ワークスペースの内容:"
           ls -la
-      
+
       - name: 簡単なテスト実行
         run: |
           echo "🧪 簡単なテストを実行中..."
           sleep 2
           echo "✅ テスト完了！"
-      
+
       - name: 完了メッセージ
         run: |
           echo "🎉 ワークフローが正常に完了しました！"
