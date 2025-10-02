@@ -15,20 +15,6 @@ on:
           - "banana"
           - "cocoa"
 
-  # 特定のブランチへのプッシュで実行
-  push:
-    branches:
-      - main
-      - develop
-      - 'feature/*'
-      - 'hotfix/*'
-
-  # プルリクエストでも実行
-  pull_request:
-    branches:
-      - main
-      - develop
-
 jobs:
   test-job:
     runs-on: ubuntu-latest
